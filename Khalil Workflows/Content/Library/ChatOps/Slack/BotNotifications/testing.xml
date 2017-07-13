@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow id="99b4129a-792e-46e9-9c8f-1b122ada1a0c">
+  <descriptionCdata><![CDATA[99b4129a-792e-46e9-9c8f-1b122ada1a0c.bf4dcc81-ac65-429b-a748-ba1155598109.description=This operation iterates through a string that contains an array in the JavaScript Object Notation format (JSON).  Each time  this operation is called, it places the value of the current array element into the "returnResult" output and advances the iterator to the next array element.\n\nThe JSON format is used to encode arrays and other values using JavaScript notation.  For arrays, this means that the values need to be enclosed by square brackets, and each element in the array can be a string (enclosed by quotes), a number, true, false, null, or  nested array or object.  Commas are always used as delimiters between array elements, and they can also appear within string elements. \n\nThe benefits of JavaScript arrays are that delimiters are fixed and cannot be confused with data, and that complex nesting of arrays and objects are supported.  The description of the enclosing folder, /Library/Utility Operations/Container/JavaScript Objects has more examples, and the JSON format is described completely at http\://www.json.org.\n\nInputs\:\n    array - The JavaScript array that will be iterated through. A normal OO list is NOT a JavaScript array.\nExamples\:\n    For example, the following is a simple JSON array\:\n        [ "cat", "dog", "horse" ]\n    The equivalent OO list (that is not a JavaScript array) is\:\n        cat,dog,horse\n\n Results\:\n    returnResult - This is the primary output and contains the current array element or an exception message if something went wrong.  When incorporating this operation into a flow, you should assign a meaningful result value from this field.\n    Result - This output field contains the value from the "returnResult" field. \n\nResponses\:\n   has more - The iterator has not yet reached the end of the array. The "returnResult" output will be populated with the value of the current element in the array, and the iterator will advance to the next element in the array.\n   no more - The iterator has reached the end of the array, and there is no more data to return.  The iterator will become undefined after this call, which basically will reset it so that if called again, this operation will begin another iteration at the beginning of the array.\n   failure - There was some error in iterating through the list, and the "returnResult" output will contain information about the error. This will occur if the input array is not a valid JavaScript array. You may wish to use a tool such as http\://www.jsonlint.com/ to help diagnose problems with JavaScript Object Notation.\n\nNotes\:\n1. Modifying the contents of the array during iteration is not generally supported, but will be safe as long as the affected item(s) are beyond the current position of the iterator.  The iterator keeps track of where it is in the array by position.  If items are added or removed to the list in a position preceding the iterator, it may cause the iterator to return results that are not obvious.  For example, if the array contains [ "a", "b", "c" ] and the iterator is positioned on the second element, "b" and the first element is removed, then the iterator will now be at the last element in the list, "c".\n2. There is currently a limitation that a flow can only have one of these array iterator steps active at a time without causing possible conflicts. In other words, if you need to iterate through a nested array, you should use a sub-flow to process the inner array.  You may have two or more of these array iterators in the same flow as long as each iterator reaches the end of its array before the next one begins.\n3. Note that since JavaScript arrays may contain nested arrays or other objects, the value returned in "returnResult" field may also require further processing.\n
+]]></descriptionCdata>
+  <annotation></annotation>
+  <name>testing</name>
+  <categories/>
+  <inputs/>
+  <possibleResponses>
+    <opResponse id="edb37a93-7122-40fc-9317-70d7be0f0d36">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules/>
+    </opResponse>
+    <opResponse id="8b26e44e-932b-4127-886c-794231b5e61f">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>false</isDefault>
+      <onFailure>true</onFailure>
+      <type>ERROR</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="271d906e-5d4b-4e6d-bf37-82a62319ce8a">
+    <annotation></annotation>
+    <name>FailureMessage</name>
+    <fieldName>FailureMessage</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="33cfec7a-5d02-448b-8f49-7e7f00aedaee">
+    <baseIcon>flow.png</baseIcon>
+    <basePath>System</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <callouts/>
+  <checkPointFlow>true</checkPointFlow>
+  <compatibleRuntimeContext>false</compatibleRuntimeContext>
+  <historyCheckPointFlow>true</historyCheckPointFlow>
+  <steps>
+    <step id="bf4dcc81-ac65-429b-a748-ba1155598109">
+      <annotation>99b4129a-792e-46e9-9c8f-1b122ada1a0c.bf4dcc81-ac65-429b-a748-ba1155598109.description</annotation>
+      <name>Array Iterator</name>
+      <bounds>
+        <x>177.0</x>
+        <y>151.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="9564fc18-9143-4698-94e1-6aedafdbcdf7">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>array</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>{
+	&quot;ok&quot;: true,
+	&quot;messages&quot;: [{
+		&quot;type&quot;: &quot;message&quot;,
+		&quot;user&quot;: &quot;U33PWBV5E&quot;,
+		&quot;text&quot;: &quot;First Request&quot;,
+		&quot;ts&quot;: &quot;1479754392.000004&quot;
+	},
+	{
+		&quot;user&quot;: &quot;U34FBJXMG&quot;,
+		&quot;inviter&quot;: &quot;U33PWBV5E&quot;,
+		&quot;text&quot;: &quot;&lt;@U34FBJXMG|automationbot&gt; has joined the channel&quot;,
+		&quot;type&quot;: &quot;message&quot;,
+		&quot;subtype&quot;: &quot;channel_join&quot;,
+		&quot;ts&quot;: &quot;1479753994.000003&quot;
+	},
+	{
+		&quot;user&quot;: &quot;U33PWBV5E&quot;,
+		&quot;text&quot;: &quot;&lt;@U33PWBV5E|awade&gt; has joined the channel&quot;,
+		&quot;type&quot;: &quot;message&quot;,
+		&quot;subtype&quot;: &quot;channel_join&quot;,
+		&quot;ts&quot;: &quot;1479753994.000002&quot;
+	}],
+	&quot;has_more&quot;: false
+}</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="cf46d537-c39a-42fb-8ff5-1638e52745bd">
+          <annotation></annotation>
+          <name>has more</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>has more</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>bf4dcc81-ac65-429b-a748-ba1155598109</refId>
+          </destination>
+          <source>
+            <refId>bf4dcc81-ac65-429b-a748-ba1155598109</refId>
+          </source>
+          <positions>
+            <point>
+              <x>227.0</x>
+              <y>185.0</y>
+            </point>
+            <point>
+              <x>287.0</x>
+              <y>145.0</y>
+            </point>
+            <point>
+              <x>284.0</x>
+              <y>128.0</y>
+            </point>
+            <point>
+              <x>267.0</x>
+              <y>125.0</y>
+            </point>
+            <point>
+              <x>227.0</x>
+              <y>185.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="2990551c-74c2-429b-a49e-6146b0c52bf0">
+          <annotation></annotation>
+          <name>no more</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>no more</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>1f1e6fe3-0be3-4f43-806b-19ec3309ed3c</refId>
+          </destination>
+          <source>
+            <refId>bf4dcc81-ac65-429b-a748-ba1155598109</refId>
+          </source>
+          <positions>
+            <point>
+              <x>227.0</x>
+              <y>185.0</y>
+            </point>
+            <point>
+              <x>501.0</x>
+              <y>193.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="c2c9df81-51d2-48c8-9f1f-dc56dfe7dd5e">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>c8fb8ef6-7e1b-4b89-b34c-edf809a21831</refId>
+          </destination>
+          <source>
+            <refId>bf4dcc81-ac65-429b-a748-ba1155598109</refId>
+          </source>
+          <positions>
+            <point>
+              <x>227.0</x>
+              <y>185.0</y>
+            </point>
+            <point>
+              <x>510.0</x>
+              <y>330.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>50efc8cb-f1e7-4123-984c-979039f22f2c</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="acd3d0a0-abdb-4507-88c6-6abdb735d665">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>mytest</contextKey>
+          <expression id="26e3a2f2-d635-4db5-bd2a-c4a38d5320a7">
+            <annotation></annotation>
+            <name>Result Field: returnResult</name>
+            <fieldName>returnResult</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="c8fb8ef6-7e1b-4b89-b34c-edf809a21831">
+      <annotation></annotation>
+      <name>Error : failure</name>
+      <bounds>
+        <x>460.0</x>
+        <y>296.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="60164344-1a61-407f-aa58-adb23fd35ae4">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>c8fb8ef6-7e1b-4b89-b34c-edf809a21831</refId>
+          </destination>
+          <source>
+            <refId>c8fb8ef6-7e1b-4b89-b34c-edf809a21831</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>ERROR</returnStepType>
+      <assignments/>
+    </returnStep>
+    <returnStep id="1f1e6fe3-0be3-4f43-806b-19ec3309ed3c">
+      <annotation></annotation>
+      <name>Resolved : success</name>
+      <bounds>
+        <x>451.0</x>
+        <y>159.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="5e6d1cfe-651b-44cd-b176-7bec1a12aab4">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>1f1e6fe3-0be3-4f43-806b-19ec3309ed3c</refId>
+          </destination>
+          <source>
+            <refId>1f1e6fe3-0be3-4f43-806b-19ec3309ed3c</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>RESOLVED</returnStepType>
+      <assignments/>
+    </returnStep>
+  </steps>
+  <startSteps>bf4dcc81-ac65-429b-a748-ba1155598109</startSteps>
+</flow>
