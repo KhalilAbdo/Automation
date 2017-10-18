@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation id="83c2e287-3d60-4b26-8139-98be8e352158">
+  <descriptionCdata><![CDATA[83c2e287-3d60-4b26-8139-98be8e352158.0109020e-f357-410e-baf2-11d5fd135739.prompt=Enter the web protocol for communicating with HPOM (http or https)\:
+83c2e287-3d60-4b26-8139-98be8e352158.01661031-1f15-43b1-a558-faa84c4d8a4c.prompt=Enter port\:
+83c2e287-3d60-4b26-8139-98be8e352158.0838a2df-e1ed-426e-95e9-dac0dd229405.prompt=Enter command\:
+83c2e287-3d60-4b26-8139-98be8e352158.1b5809ba-3d70-433d-940c-2a63750780f5.prompt=Enter password\:
+83c2e287-3d60-4b26-8139-98be8e352158.2c190501-8577-407f-9571-75bb34d39508.prompt=Enter outputPath (for WMI)\:
+83c2e287-3d60-4b26-8139-98be8e352158.4a748e50-5cec-4115-ae3d-6e9d8758653b.prompt=Enter HPOM node on which to execute the command\:
+83c2e287-3d60-4b26-8139-98be8e352158.5ec7452e-0b4c-438c-b9b2-dde25011fa3d.prompt=Enter arguments\:
+83c2e287-3d60-4b26-8139-98be8e352158.635680bd-65c1-46ff-9a2b-1356d5e520cd.prompt=Enter timeout (in miliseconds)\:
+83c2e287-3d60-4b26-8139-98be8e352158.674266ef-eaec-4310-b501-87420a7e91ad.prompt=Enter privateKeyFile (for SSH)\:
+83c2e287-3d60-4b26-8139-98be8e352158.6a6dd36a-a28a-4d9a-b78a-a80f105c5ad9.prompt=Enter passwordPrompt (for telnet)\:
+83c2e287-3d60-4b26-8139-98be8e352158.76ca09de-f92a-48af-bd73-0c4049596373.prompt=Enter NAS device (for NASConnectTelnet)\:
+83c2e287-3d60-4b26-8139-98be8e352158.86b6098b-bea5-4dbf-84e8-8dab17cb1d03.prompt=Enter environment\:
+83c2e287-3d60-4b26-8139-98be8e352158.8f011d4e-84f0-44bd-8b45-fee30a193c69.prompt=Enter username\:
+83c2e287-3d60-4b26-8139-98be8e352158.9d05a3c8-390e-45fe-a866-b7a662a11036.prompt=Enter path to startDir (for local and WMI)\:
+83c2e287-3d60-4b26-8139-98be8e352158.a626c811-96a4-411e-85e7-c05e3b76202d.prompt=Enter sasHost\:
+83c2e287-3d60-4b26-8139-98be8e352158.b5741285-7540-481a-bf0b-459185cbc82d.prompt=Enter pty (for SSH)\:
+83c2e287-3d60-4b26-8139-98be8e352158.b8458e4f-91f0-4f41-bb48-9e3447f1669a.prompt=Enter usernamePrompt (for telnet)\:
+83c2e287-3d60-4b26-8139-98be8e352158.dd4e676e-a138-4ad7-b2a1-d9fb50a31ad5.prompt=Enter sasHostUsername\:
+83c2e287-3d60-4b26-8139-98be8e352158.description=<pre>\nThis operation runs a command, allowing you to specify whether it runs locally (no port to be specified), via SSH, Global Shell, ROSH, Telnet, or RSH.\n\nInputs\:\n    host - The host name or IP address.\n    port - The port number used to connect to the host.\n    username - The user name used to connect.\n    password - The password associated with the "username" input. If using a private key file, this is the passphrase for the file.\n    protocol - The protocol used to run the command. \nValid values\: SSH, ROSH, GlobalShell, Telnet, RSH, REXEC, local, WMI, NASConnectTelnet, HPOM\n    timeout - The time to wait for the command to complete (in milliseconds). Increase this value if you are getting incomplete output results or a timeout.\nDefault value\: 90000 (90 seconds), 600000 (if protocol->WMI)\n    command - The command to run.\n    arguments - The arguments to pass to the command.\n    environment - Specifies the environment variables and values that need to be defined when running the command.\n    startDir - The path to the starting directory.\n    pty - Specifies whether to use pty (used by SSH, GlobalShell)\nValid values\: true, false\nDefault value\: false\n    privateKeyFile - The absolute path to the private key file on the RAS host (used by SSH, GlobalShell).\n    sasHost - The host on which to run the ROSH command.\n    sasHostUsername - The user name used to run the ROSH command on "sasHost".\n    usernamePrompt - The prompt message for the user name. Used by the Telnet protocol. \nDefault value\: When used by the NASConnectTelnet protocol, the default value is "NAS Login\:".\n    passwordPrompt - The prompt message for the password associated with the "usernamePrompt"  input. Used by the Telnet protocol.  \nDefault value\: When used by the 'NASConnectTelnet' protocol, the default value is "Password\:"\n    outputPath - The network accessible path where to store the temporary files. If you do not specify this input, it points to '\\\\host\\admin$\\temp\\'. If this path is not accessible, change it to use another share to which the host local system account has write access. By default, the path needs to be changed on Windows 2000 systems.\n    nasDevice - The NAS device on which to run the command when using the 'NASConnect' protocol.\n    nasDeviceConsoleMode - The NAS device console mode used to run the command scripts running the command on the specified NAS device. If you leave this input empty, command scripts are not used, and the connections to the NAS device and the command are issued directly in the console. This is not recommended. Due to error handling capabilities limitation, the result might be a success even if the command failed to run. You can find the values for this input in the NAS web interface, as a drop-down list when creating a new command script (for example, Cisco IOS enable).\n    hpomNode - The node on which to run the command.\n    hpomProtocol - The protocol used to communicate with HPOM \nValid values\: HTTP or HTTPS.\n    characterSet - The name of the character set used for stream encoding and decoding between the RAS and target machine.\nValid values\: SJIS,EUC-JP, UTF-8\nDefault value\: UTF-8 (used by SSH, GlobalShell, Telnet, RSH, REXEC)\n    escapeCharacters - A list of characters, sepparated by comma, that will be escaped from the command's arguments list. By default, this input is left blank and no characters are escaped.\n\nHidden Inputs\:\n    useDelegation - This input only applies to the WMI protocol. If set to "true" the operation will use the 'Delegate' impersonation level and the 'Kerberos' authentication protocol. If 'false', empty or missing the operation will use 'Impersonate' for the impersonation level and the default authentication protocol (which is NTLM).\nValid values\: true, false\nDefault value\: false\n\nResults\:\n    returnResult - This is the primary output. Used to determine the operation response, specifying whether the operation is successful or not.\n    stdOut - The standard output (STDOUT) of the command.\n    stdErr - The standard error (STDERR) of the command.\n    exitStatus - Every command returns an exit status (sometimes referred to as a return status or exit code). A successful command returns a 0, while an unsuccessful one returns a non-zero value that usually can be interpreted as an error code. The supported protocols are\: SSH, ROSH, GlobalShell, local, WMI. \nExamples\: 0 for a successful command, 126 if the command cannot execute.\n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully or if the command was not yet terminated.\n\nNotes\:\n1. Telnet protocol - Since telnet is a shell protocol, not a remote execution protocol, the response is always  successful if the command is ran in the remote shell.  The return code of the specified command cannot be determined in this protocol.  If you must use the telnet protocol with this operation, make sure to check the command results. Consider using the SSH or REXEC protocol instead.\n2. The "exitStatus" result for Telnet, RSH, REXEC, NasConnectTelnet, HPOM will be "" (empty). For Windows host, it will be run the following final command\: "cmd /V\:on /c <command>  ^& echo \!ERRORLEVEL\!". For Linux host, the "; echo $?" will be appended to "command" input or "arguments" input (if the last one is not empty). \n3. If RSH protocol is used the command should be run from a machine that is in the same network as the one from the host input.\n4. WMI protocol can be used only from Windows RAS. If you want to make connection from a non Windows RAS use other protocols like SSH, Telnet.\n</pre>
+83c2e287-3d60-4b26-8139-98be8e352158.ea42e3a2-fc2b-48f6-be52-ca8772731f89.prompt=Enter protocol\:
+83c2e287-3d60-4b26-8139-98be8e352158.f9dd3251-d93e-41bb-b3c0-e4bac5e16588.prompt=Enter NAS device console mode (for NASConnectTelnet)\:
+83c2e287-3d60-4b26-8139-98be8e352158.fcccb0c8-d9f8-4c4b-aaa0-1496a459664c.prompt=Enter host\:
+]]></descriptionCdata>
+  <annotation>83c2e287-3d60-4b26-8139-98be8e352158.description</annotation>
+  <name>Remote Command</name>
+  <categories/>
+  <inputs>
+    <userInputBinding id="fcccb0c8-d9f8-4c4b-aaa0-1496a459664c">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>host</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.fcccb0c8-d9f8-4c4b-aaa0-1496a459664c.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="01661031-1f15-43b1-a558-faa84c4d8a4c">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>port</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.01661031-1f15-43b1-a558-faa84c4d8a4c.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="8f011d4e-84f0-44bd-8b45-fee30a193c69">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>username</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.8f011d4e-84f0-44bd-8b45-fee30a193c69.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="1b5809ba-3d70-433d-940c-2a63750780f5">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>ENCRYPTED</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>password</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.1b5809ba-3d70-433d-940c-2a63750780f5.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="ea42e3a2-fc2b-48f6-be52-ca8772731f89">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>protocol</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.ea42e3a2-fc2b-48f6-be52-ca8772731f89.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <link>
+        <refId>f5eba44b-b975-4b67-897f-2faabf86d2aa</refId>
+        <refName>Remote Command - Protocols</refName>
+      </link>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="635680bd-65c1-46ff-9a2b-1356d5e520cd">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>timeout</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.635680bd-65c1-46ff-9a2b-1356d5e520cd.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="0838a2df-e1ed-426e-95e9-dac0dd229405">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>command</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.0838a2df-e1ed-426e-95e9-dac0dd229405.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="5ec7452e-0b4c-438c-b9b2-dde25011fa3d">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>arguments</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.5ec7452e-0b4c-438c-b9b2-dde25011fa3d.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="86b6098b-bea5-4dbf-84e8-8dab17cb1d03">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>environment</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.86b6098b-bea5-4dbf-84e8-8dab17cb1d03.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="9d05a3c8-390e-45fe-a866-b7a662a11036">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>startDir</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.9d05a3c8-390e-45fe-a866-b7a662a11036.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="b5741285-7540-481a-bf0b-459185cbc82d">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>pty</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.b5741285-7540-481a-bf0b-459185cbc82d.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <link>
+        <refId>96a1ed25-cdc9-4ff6-8fba-e9c044c5ca53</refId>
+        <refName>Boolean - False Default</refName>
+      </link>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="674266ef-eaec-4310-b501-87420a7e91ad">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>privateKeyFile</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.674266ef-eaec-4310-b501-87420a7e91ad.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="a626c811-96a4-411e-85e7-c05e3b76202d">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>sasHost</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.a626c811-96a4-411e-85e7-c05e3b76202d.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="dd4e676e-a138-4ad7-b2a1-d9fb50a31ad5">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>sasHostUsername</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.dd4e676e-a138-4ad7-b2a1-d9fb50a31ad5.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="b8458e4f-91f0-4f41-bb48-9e3447f1669a">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>usernamePrompt</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.b8458e4f-91f0-4f41-bb48-9e3447f1669a.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="6a6dd36a-a28a-4d9a-b78a-a80f105c5ad9">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>passwordPrompt</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.6a6dd36a-a28a-4d9a-b78a-a80f105c5ad9.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="2c190501-8577-407f-9571-75bb34d39508">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>outputPath</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.2c190501-8577-407f-9571-75bb34d39508.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="76ca09de-f92a-48af-bd73-0c4049596373">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>nasDevice</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.76ca09de-f92a-48af-bd73-0c4049596373.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="f9dd3251-d93e-41bb-b3c0-e4bac5e16588">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>nasDeviceConsoleMode</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.f9dd3251-d93e-41bb-b3c0-e4bac5e16588.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="4a748e50-5cec-4115-ae3d-6e9d8758653b">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>hpomNode</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.4a748e50-5cec-4115-ae3d-6e9d8758653b.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="0109020e-f357-410e-baf2-11d5fd135739">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>hpomProtocol</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>83c2e287-3d60-4b26-8139-98be8e352158.0109020e-f357-410e-baf2-11d5fd135739.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="9d7fa08c-b549-4266-968c-119248f01575">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>characterSet</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <staticBinding id="4f8f4edf-bae2-4749-8108-844046d7432d">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>escapeCharacters</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value></value>
+      <record>false</record>
+    </staticBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="b22c813d-5063-4028-a5ba-57b10b4f87e2">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="a84b5f45-7e48-4a87-bcfe-971a8e4f5b9f">
+          <annotation></annotation>
+          <name>returnCode</name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="ccd5b7d1-7c3e-4e47-bb05-c94e7cdfcf14">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>0</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="10e71a44-7108-44ad-af27-bd83591bb67d">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>true</isDefault>
+      <onFailure>true</onFailure>
+      <type>ERROR</type>
+      <matchRules>
+        <expression id="2fa60a9e-3e74-4a4c-9ff8-4ab91ce0029e">
+          <annotation></annotation>
+          <name>returnCode</name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="e5160642-9b70-4ffe-8c11-69f64180af22">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>-1</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="8d31cd1f-7544-43d2-9969-2af74e971573">
+    <annotation></annotation>
+    <name>returnCode</name>
+    <fieldName>returnResult</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="0a58b7b2-48c8-4809-84a4-47720599ed6d">
+    <baseIcon>workstation_network.png</baseIcon>
+    <basePath>/Others/</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <opRef>
+    <refId>3c0f1258-b910-4665-b809-753ed5586c08</refId>
+  </opRef>
+  <fieldValues/>
+  <groupAliasRef>
+    <refId>5233030c-af46-432b-a682-b326ca6bf2ae</refId>
+    <refName>RAS_Operator_Path</refName>
+  </groupAliasRef>
+  <overrideGroupAlias>${overrideJRAS}</overrideGroupAlias>
+</operation>

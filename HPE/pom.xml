@@ -5,4 +5,46 @@
   <groupId>DEFAULT</groupId>
   <artifactId>HPE</artifactId>
   <version>1.0.0-SNAPSHOT</version>
+  <dependencies>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>Base</artifactId>
+      <version>[1.9.1]</version>
+    </dependency>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>CSA-INTEGRATIONS</artifactId>
+      <version>[4.50.0000]</version>
+    </dependency>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>HPE Solutions</artifactId>
+      <version>[1.11.0]</version>
+    </dependency>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>Microsoft Azure</artifactId>
+      <version>[16.07]</version>
+    </dependency>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>SDDG-RBA</artifactId>
+      <version>[10.21.16]</version>
+    </dependency>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>SSH test Wiz</artifactId>
+      <version>[1.0.0]</version>
+    </dependency>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>ServiceNow</artifactId>
+      <version>[1.1.1]</version>
+    </dependency>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>VMWare Server</artifactId>
+      <version>[1.1.0]</version>
+    </dependency>
+  </dependencies>
 </project>

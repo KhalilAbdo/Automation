@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation id="1aed7195-f030-4d3b-82eb-52eaae17805d">
+  <descriptionCdata><![CDATA[1aed7195-f030-4d3b-82eb-52eaae17805d.description=<pre>\nThis operation can be used to control the path of execution that a flow takes. It allows you to manually select the flow's response. \nWhen the execution of the flow reaches a "Manual" step, after the step starts, you are prompted to select the response to follow from a selection list. Each response corresponds to a step that follows the "Manual" step in the flow. This step can be followed by any number of steps.\n\nExample\: You have a simple flow that has a "Manual" step as the start step, followed by two steps named "Read From File" and "Write To File". When the execution of the flow reaches the "Manual" step, you are prompted to select the response of this step. You can choose between "Read From File" and "Write To File".\n</pre>
+]]></descriptionCdata>
+  <annotation>1aed7195-f030-4d3b-82eb-52eaae17805d.description</annotation>
+  <name>Manual</name>
+  <categories/>
+  <inputs/>
+  <possibleResponses/>
+  <availableResultExpressions/>
+  <resultExpression id="6b659ae7-be46-4106-a7e5-c63936f446cd">
+    <annotation></annotation>
+    <name></name>
+    <fieldName>result</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="12c0fceb-b62a-49d7-ba6a-05f971f65fd7">
+    <baseIcon>manual.png</baseIcon>
+    <basePath>System</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <opRef>
+    <refId>8ab18c7f-96b3-46cc-a5d9-3abccdf58700</refId>
+  </opRef>
+  <fieldValues/>
+  <groupAliasRef>
+    <refId>5233030c-af46-432b-a682-b326ca6bf2ae</refId>
+    <refName>RAS_Operator_Path</refName>
+  </groupAliasRef>
+  <overrideGroupAlias>${overrideJRAS}</overrideGroupAlias>
+</operation>

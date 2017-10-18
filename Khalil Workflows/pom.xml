@@ -26,5 +26,25 @@
       <artifactId>ServiceNow</artifactId>
       <version>[1.1.1]</version>
     </dependency>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>HPE Solutions</artifactId>
+      <version>[1.11.0]</version>
+    </dependency>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>Operating Systems</artifactId>
+      <version>[1.4.0]</version>
+    </dependency>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>SA</artifactId>
+      <version>[1.4.0]</version>
+    </dependency>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>SM</artifactId>
+      <version>[1.0.3]</version>
+    </dependency>
   </dependencies>
 </project>
